@@ -1,1 +1,3 @@
-console.log('hi')
+const onButtonClick = (value) => {
+  console.log('value is ', value)
+}
