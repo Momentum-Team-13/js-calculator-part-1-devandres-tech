@@ -6,16 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputEvent = e.target.innerHTML
     display.textContent += e.target.innerHTML.replace(/x/g, '*')
 
-    if (inputEvent === '=') {
-      const calculation = userInputs.replace(/x/g, '*')
-      const result = eval(calculation)
-      display.textContent = result
-      userInputs = ''
-    } else if (inputEvent === 'C') {
-      display.textContent = ''
-      userInputs = ''
-    } else {
-      userInputs += inputEvent
+    switch (inputEvent) {
+      case '=':
+        const calculation = userInputs.replace(/x/g, '*')
+        const result = eval(calculation)
+        display.textContent = result
+        userInputs = ''
+        break
+
+      case 'C':
+        display.textContent = ''
+        userInputs = ''
+        break
+
+      default:
+        userInputs += inputEvent
+        break
     }
   })
 })
