@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (inputEvent === '=') {
       const calculation = userInputs.replace(/x/g, '*')
-      console.log('hiii', calculation)
       const result = eval(calculation)
       display.textContent = result
       userInputs = ''
