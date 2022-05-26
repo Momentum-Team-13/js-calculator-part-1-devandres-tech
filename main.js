@@ -1,18 +1,23 @@
-let userInputs = ''
+document.addEventListener('DOMContentLoaded', () => {
+  let userInputs = ''
+  const display = document.getElementById('display')
 
-const onButtonClick = (value) => {
-  userInputs += value
-  let display = document.getElementById('display')
-  display.textContent += value
-}
+  document.querySelectorAll('.button').forEach((item) => {
+    item.addEventListener('click', (e) => {
+      display.textContent += e.target.innerHTML.replace(/x/g, '*')
+      userInputs += e.target.innerHTML
+    })
+  })
 
-const onClearDisplay = () => {
-  document.getElementById('display').textContent = ''
-  userInputs = ''
-}
+  document.getElementById('equals').addEventListener('click', () => {
+    const calculation = userInputs.replace(/x/g, '*')
+    const result = eval(calculation)
+    display.textContent = result
+    userInputs = ''
+  })
 
-const onEqualsClick = () => {
-  const result = eval(userInputs)
-  document.getElementById('display').textContent = result
-  userInputs = ''
-}
+  document.getElementById('clear').addEventListener('click', () => {
+    display.textContent = ''
+    userInputs = ''
+  })
+})
